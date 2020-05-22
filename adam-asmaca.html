@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Adam Asmaca Oyunu</title>
+</head>
+<body>
+  <div>
+      <button onclick="basla()">Oyunu Başlat !</button>
+      <h3>NOT: Oyun sırasında yalnızca <u>küçük harfleri</u> kullanınız.</h3>
+  </div>
+</body>
+<style type="text/css">
+  body {
+    background-color: black;
+  }
+  div {
+    margin: 40vh auto;
+    text-align: center;
+  }
+  button {
+    padding: 2.5vw;
+  }
+  h3 {
+    color: red;
+  }
+</style>
+<script>
+function basla() {
+
+var kelimeler = ["elma", "armut", "telefon", "rakam", "gün", "ay", "hayat"]
+var kelimeSec = kelimeler[Math.floor(Math.random() * kelimeler.length)];
+var answerArray = [];
+
+for (var i = 0; i < kelimeSec.length; i++)  {
+  answerArray[i] = "_";
+}
+
+var remainingLetters = kelimeSec.length;
+
+alert("Oyun Başlıyor");
+
+while (remainingLetters > 0) {
+
+alert(answerArray.join(" "));
+var guess = prompt("Harf Tahmini");
+
+if (guess == null) {
+break;
+} else if (guess.length !== 1) {
+  alert("Yalnızca bir harf tahmininde bulunabilirsiniz.");
+  } else {
+   for (var j = 0; j < kelimeSec.length; j++) {
+   if (kelimeSec[j] == guess){
+    answerArray[j] = guess;
+    remainingLetters--;
+    }
+   }
+  }
+}
+  alert("TEBRİKLER! Cevap : " + kelimeSec);
+}
+</script>
+</html>
